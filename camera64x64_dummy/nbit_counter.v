@@ -9,7 +9,7 @@ module nbit_counter #(
   output reg  [BIT-1:0] COUNT
 ) ;
 
-  always @(posedge CLK or negedge RST) begin
+  always @(posedge CLK or posedge RST) begin
     if (RST)
       COUNT <= 0;
     else if (TRIG)
