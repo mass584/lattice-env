@@ -71,7 +71,7 @@ module camera64x64_dummy (
   //============================================================
   //
   //============================================================
-  always @(posedge CLK or negedge RST) begin
+  always @(posedge CLK or posedge RST) begin
     if (RST)
       LOOKUP <= 1'b0;
     else if (s_spidetect_pulse_neg)
@@ -85,7 +85,7 @@ module camera64x64_dummy (
   //============================================================
   //
   //============================================================
-  always @(posedge CLK or negedge RST) begin
+  always @(posedge CLK or posedge RST) begin
     if (RST)
       INT <= 1'b0;
     else if (s_counter_done)

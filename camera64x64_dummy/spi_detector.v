@@ -30,7 +30,7 @@ module spi_detector (
     if (RST)
       r_timer <= 0;
     else
-      r_timer <= r_timer + 1;
+      r_timer <= r_timer + 4'b1;
   end
 
   //============================================================
