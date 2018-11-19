@@ -20,13 +20,13 @@ module camera64x64_dummy (
   wire s_clk;
 
   reg       r_lookup_next;
-  reg [7:0] r_pll_rst = 8'hff;
+  reg [7:0] r_pll_rst;
 
   //============================================================
   // PLL Reset (Shift Register)
   //============================================================
   always @(posedge CLK) begin
-    r_pll_rst[7:0] <= {r_pll_rst[6:0], 1'b0};
+    r_pll_rst[7:0] <= {r_pll_rst[6:0], 1'b1};
   end
 
   //============================================================
@@ -37,7 +37,7 @@ module camera64x64_dummy (
 `else
   PLL12M u_PLL12M (
     .ref_clk_i   ( CLK                   ) , // 12MHz
-    .rst_n_i     ( r_pll_rst[7]          ) ,
+    .rst_n_i     ( ~r_pll_rst[7]         ) ,
     .outcore_o   ( s_clk                 ) , // 240MHz
     .outglobal_o (                       )
   );
