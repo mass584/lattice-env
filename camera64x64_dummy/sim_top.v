@@ -1,3 +1,4 @@
+
 `timescale 1ps / 1ps
 
 module sim_top();
@@ -9,7 +10,7 @@ module sim_top();
   // System Task
   //============================================================
   initial begin
-    #100000 $finish();
+    #30000000 $finish();
   end
 
   initial begin
@@ -22,18 +23,19 @@ module sim_top();
   //============================================================
   initial begin
     CLK = 0;
-    forever #10 CLK = ~CLK;
+    forever #2084 CLK = ~CLK; // 240MHz
   end
 
   initial begin
     RST = 1;
-    #30 RST = 0;
+    #10000 RST = 0;
   end
 
   initial begin
     SCLK = 0;
     forever begin
-      #20000 repeat(100) #100 SCLK = ~SCLK;
+      #3000000
+      repeat(30) #62500 SCLK = ~SCLK; // 8MHz
       SCLK = 0;
     end
   end

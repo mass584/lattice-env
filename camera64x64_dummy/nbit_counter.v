@@ -1,3 +1,6 @@
+
+`timescale 1ps / 1ps
+
 module nbit_counter #(
   parameter             BIT = 8 ,
   parameter             MAX = 8'hFF

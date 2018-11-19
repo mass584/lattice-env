@@ -1,14 +1,16 @@
 
 `timescale 1ps / 1ps
 
-module spi_detector (
-  input   wire  CLK , // 100MHz
-  input   wire  RST , //  10MHz
+module spi_detector #(
+  parameter     FREQ = 8'hff
+) (
+  input   wire  CLK ,
+  input   wire  RST ,
   input   wire  SCLK ,
   output  wire  DETECT
 ) ;
 
-  reg [3:0] r_timer;
+  reg [7:0] r_timer;
   reg [7:0] r_counter;
   reg [7:0] r_capture0;
   reg [7:0] r_capture1;
@@ -24,13 +26,15 @@ module spi_detector (
   end
 
   //============================================================
-  // clock freerun counter
+  // 
   //============================================================
   always @(posedge CLK or posedge RST) begin
     if (RST)
-      r_timer <= 0;
+      r_timer <= 8'b0;
+    else if (r_timer==FREQ)
+      r_timer <= 8'b0;
     else
-      r_timer <= r_timer + 4'b1;
+      r_timer <= r_timer + 8'b1;
   end
 
   //============================================================
@@ -38,10 +42,10 @@ module spi_detector (
   //============================================================
   always @(posedge CLK or posedge RST) begin
     if (RST) begin
-      r_capture0 <= 0;
-      r_capture1 <= 0;
-    end else if (r_timer==4'hf) begin
-      r_capture0 <= r_counter; // this bus signal must be synchronized by CLK !!!
+      r_capture0 <= 8'b0;
+      r_capture1 <= 8'b0;
+    end else if (r_timer==FREQ) begin
+      r_capture0 <= r_counter; // TODO : this bus signal must be synchronized by CLK !!!
       r_capture1 <= r_capture0;
     end
   end
