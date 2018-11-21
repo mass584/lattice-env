@@ -10,7 +10,7 @@ module sim_top();
   // System Task
   //============================================================
   initial begin
-    #30000000 $finish();
+    #100000000 $finish();
   end
 
   initial begin
@@ -23,19 +23,19 @@ module sim_top();
   //============================================================
   initial begin
     CLK = 0;
-    forever #2084 CLK = ~CLK; // 240MHz
+    forever #41680 CLK = ~CLK; // 12MHz
   end
 
   initial begin
     RST = 1;
-    #10000 RST = 0;
+    #100000 RST = 0;
   end
 
   initial begin
     SCLK = 0;
     forever begin
-      #3000000
-      repeat(30) #62500 SCLK = ~SCLK; // 8MHz
+      #9000000
+      repeat(50) #62500 SCLK = ~SCLK; // 8MHz
       SCLK = 0;
     end
   end
