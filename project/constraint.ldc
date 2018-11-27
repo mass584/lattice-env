@@ -1,0 +1,3 @@
+create_clock -name {SCLK} -period 125 [get_ports SCLK]
+create_clock -name {CLK} -period 83.33333333 [get_ports CLK]
+set_clock_groups -group [get_clocks SCLK] -group [get_clocks CLK] -asynchronous

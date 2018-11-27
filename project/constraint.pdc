@@ -1,0 +1,8 @@
+ldc_set_location -site {46} [get_ports SCLK]
+ldc_set_location -site {19} [get_ports RST]
+ldc_set_location -site {35} [get_ports CLK]
+ldc_set_location -site {11} [get_ports LOOKUP]
+ldc_set_location -site {18} [get_ports INT]
+ldc_set_location -site {20} [get_ports LED_1]
+ldc_set_location -site {48} [get_ports LED_2]
+ldc_set_location -site {27} [get_ports LED_3]
