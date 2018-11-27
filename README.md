@@ -1,18 +1,13 @@
-# verilog-primitive-modules
+# camera64x64_dummy
 
-波形シミュレーション環境はMAC
-Lattice Radiantの動作環境はubuntu18.04を前提としています
+波形シミュレーション環境はMAC,Lattice Radiant環境はubuntu18.04を前提としている。
 
-
-1. gtkwaveインストール
-
-```
+## gtkwaveインストール
+```shell
 brew tap homebrew/cask
 brew cask install gtkwave
 ```
-
 以下のエラーメッセージが出る場合がある
-
 ```
 Error: Checksum for Cask 'gtkwave' does not match.
 
@@ -22,29 +17,21 @@ File:     /Users/masugata/Library/Caches/Homebrew/downloads/65d2bf8e005d8a33e661
 
 To retry an incomplete download, remove the file above.
 ```
-
 この場合はsha256のchecksum値を変更する必要がある
-
 ```
 brew cask edit gtkwave
 ```
-
-再度インストールを実行
-
+再度インストールを実行する
 ```
 brew cask install gtkwave
 ```
 
-
-2. icarus-verilogインストール
-
+## icarus-verilogインストール
 ```
 brew install icarus-verilog
 ```
 
-
-3. 波形シミュレーション
-
+## 波形シミュレーション
 ```
 cd camera64x64_dummy
 make
@@ -52,18 +39,14 @@ make
 open sim_top.vcd
 ```
 
-
-4. lattice radiantのインストール
-
+## lattice radiantのインストール
 以下より本体パッケージとライセンスファイルをダウンロードします。
 対応OSはRHELとなっていますが、ubuntuでも動作します。
 http://www.latticesemi.com/latticeradiant
 
 インストール方法はInstallation Guidesを参照してください。
 
-
-5. コンフィグレーションROMデータ作成
-
+## コンフィグレーションROMデータ作成
 radiant起動をする。
 
 ```
