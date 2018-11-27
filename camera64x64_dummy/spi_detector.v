@@ -2,7 +2,7 @@
 `timescale 1ps / 1ps
 
 module spi_detector #(
-  parameter     FREQ = 8'hff
+  parameter     FREQ = 12'hfff
 ) (
   input   wire  CLK ,
   input   wire  RST ,
@@ -10,10 +10,10 @@ module spi_detector #(
   output  wire  DETECT
 ) ;
 
-  reg [7:0] r_timer;
-  reg [7:0] r_counter;
-  reg [7:0] r_capture0;
-  reg [7:0] r_capture1;
+  reg [11:0] r_timer;
+  reg [ 7:0] r_counter;
+  reg [ 7:0] r_capture0;
+  reg [ 7:0] r_capture1;
 
   //============================================================
   // spi clock freerun counter
@@ -30,11 +30,11 @@ module spi_detector #(
   //============================================================
   always @(posedge CLK or posedge RST) begin
     if (RST)
-      r_timer <= 8'b0;
+      r_timer <= 12'b0;
     else if (r_timer==FREQ)
-      r_timer <= 8'b0;
+      r_timer <= 12'b0;
     else
-      r_timer <= r_timer + 8'b1;
+      r_timer <= r_timer + 12'b1;
   end
 
   //============================================================

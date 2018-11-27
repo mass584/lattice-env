@@ -23,7 +23,7 @@ module camera64x64_dummy (
   //
   //============================================================
   spi_detector #(
-    .FREQ   ( 8'h8                  )
+    .FREQ   ( 12'h3FF               )
   ) u_spi_detector (
     .CLK    ( CLK                   ) ,
     .RST    ( RST                   ) ,
@@ -87,7 +87,7 @@ module camera64x64_dummy (
       LOOKUP        <= r_lookup_next;
       r_lookup_next <= r_lookup_next;
     end else if (s_spidetect_pulse_pos) begin
-      LOOKUP        <= 1'b0;
+      LOOKUP        <= LOOKUP;
       r_lookup_next <= ~r_lookup_next;
     end else begin
       LOOKUP        <= LOOKUP;
