@@ -1,4 +1,4 @@
-# camera64x64_dummy
+# lattice-env
 
 波形シミュレーション環境はMAC,Lattice Radiant環境はubuntu18.04を前提としている。
 
